@@ -34,7 +34,7 @@ public class FakeSalesHistory implements SellHistoryRepository {
     }
 
     @Override
-    public List<SellHistory> findByProductId(int userId) {
+    public List<SellHistory> findByUserId(int userId) {
         return sales.stream().filter(s -> s.getUserId() == userId).collect(Collectors.toList());
     }
 

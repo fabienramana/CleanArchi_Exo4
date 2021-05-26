@@ -58,4 +58,5 @@ public class Product {
     public void setDetails(String details) {
         this.details = details;
     }
+
 }

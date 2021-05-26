@@ -32,6 +32,7 @@ public class GetProductAsUser {
         double productPrice = price.get().getPrice();
         List<SellHistory> sellHistoryList = sellHistoryRepository.findByProductIdAndUserId(productId, userId);
 
+        System.out.println(sellHistoryList.size());
         int nbCommandInLast6Months = getNbCommandInLastMonths(6, sellHistoryList);
         if(nbCommandInLast6Months>3) productPrice *= 0.9;
 
