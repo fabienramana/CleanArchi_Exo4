@@ -16,6 +16,6 @@ public class GetProductAsPublic {
 
         Price price = priceRepository.findByProductId(productId);
 
-        return p;
+        return new ProductDto(p, price.getPrice());
     }
 }

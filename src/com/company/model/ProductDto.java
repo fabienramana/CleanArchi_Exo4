@@ -9,7 +9,7 @@ public class ProductDto extends Product{
     }
 
     public ProductDto(Product product, double price) {
-        super(product., name, description, category, details);
+        super(product.getId(), product.getName(), product.getDescription(), product.getCategory(), product.details);
         this.price = price;
     }
 }

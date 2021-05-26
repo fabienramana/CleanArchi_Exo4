@@ -26,13 +26,14 @@ public class GetProductAsUser {
         Price price = priceRepository.findByProductId(productId);
         double productPrice = price.getPrice();
         List<SellHistory> sellHistoryList = sellHistoryRepository.findByProductIdAndUserId(productId, userId);
+
         int nbCommandInLast6Months = getNbCommandInLastMonths(6, sellHistoryList);
         if(nbCommandInLast6Months>3) productPrice *= 0.9;
+
         int nbCommandInLastYear = getNbCommandInLastMonths(12, sellHistoryList);
         if(nbCommandInLastYear>5) productPrice *= 1.05;
 
-
-        return product;
+        return new ProductDto(product, productPrice);
     }
 
     private int getNbCommandInLastMonths(int months, List<SellHistory> sellHistoryList){
