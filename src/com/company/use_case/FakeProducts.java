@@ -16,7 +16,7 @@ public class FakeProducts implements ProductRepository {
         Product pr3 = new Product("Pantalon","Pantalon noir", "Vestimentaire","");
         products.put(1, pr1);
         products.put(2, pr2);
-        products.put(3, pr2);
+        products.put(3, pr3);
     }
 
     @Override
