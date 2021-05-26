@@ -3,7 +3,7 @@ package com.company.model;
 import java.util.List;
 
 public interface SellHistoryRepository {
-    public SellHistory findByProductIdAndUserId(int id);
+    List<SellHistory> findByProductIdAndUserId(int productId, int userId);
 
-    public List<SellHistory> findByProductIdAndUserId(int productId, int userId);
+    List<SellHistory> findByProductId(int userId);
 }
