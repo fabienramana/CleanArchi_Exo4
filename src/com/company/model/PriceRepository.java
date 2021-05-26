@@ -1,5 +1,7 @@
 package com.company.model;
 
+import java.util.Optional;
+
 public interface PriceRepository {
-    public Price findByProductId(int id);
+    public Optional<Price> findByProductId(int id);
 }

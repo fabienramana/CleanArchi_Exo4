@@ -1,10 +1,12 @@
 package com.company.use_case;
 
+import com.company.exception.PriceException;
+import com.company.exception.ProductException;
 import com.company.model.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 public class GetProductAsUser {
     private UserRepository userRepository;
@@ -19,12 +21,15 @@ public class GetProductAsUser {
         this.productRepository = productRepository;
     }
 
-    public ProductDto getProduct(int productId, int userId){
+    public ProductDto getProduct(int productId, int userId) throws PriceException, ProductException {
         User user = userRepository.findById(userId);
-        Product product = productRepository.findById(productId);
+        Optional<Product> product = productRepository.findById(productId);
+        if(!product.isPresent()) throw new ProductException("Product not found : "+productId);
 
-        Price price = priceRepository.findByProductId(productId);
-        double productPrice = price.getPrice();
+        Optional<Price> price = priceRepository.findByProductId(productId);
+        if(!price.isPresent()) throw new PriceException("Price not found for the product "+productId);
+
+        double productPrice = price.get().getPrice();
         List<SellHistory> sellHistoryList = sellHistoryRepository.findByProductIdAndUserId(productId, userId);
 
         int nbCommandInLast6Months = getNbCommandInLastMonths(6, sellHistoryList);
@@ -33,7 +38,7 @@ public class GetProductAsUser {
         int nbCommandInLastYear = getNbCommandInLastMonths(12, sellHistoryList);
         if(nbCommandInLastYear>5) productPrice *= 1.05;
 
-        return new ProductDto(product, productPrice);
+        return new ProductDto(product.get(), productPrice);
     }
 
     private int getNbCommandInLastMonths(int months, List<SellHistory> sellHistoryList){

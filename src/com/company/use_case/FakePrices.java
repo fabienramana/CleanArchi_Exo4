@@ -6,6 +6,7 @@ import com.company.model.PriceRepository;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class FakePrices implements PriceRepository {
     Map<Integer, Price> prices;
@@ -24,7 +25,7 @@ public class FakePrices implements PriceRepository {
     }
 
     @Override
-    public Price findByProductId(int id) {
-        return prices.get(id);
+    public Optional<Price> findByProductId(int id) {
+        return Optional.ofNullable(prices.get(id));
     }
 }
