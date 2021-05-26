@@ -11,11 +11,11 @@ public class GetProductAsPublic {
         this.productRepository = productRepository;
     }
 
-    public Product getProduct(int productId){
+    public ProductDto getProduct(int productId){
         Product p = productRepository.findById(productId);
 
         Price price = priceRepository.findByProductId(productId);
 
-        return p;
+        return new ProductDto(p, price.getPrice());
     }
 }
