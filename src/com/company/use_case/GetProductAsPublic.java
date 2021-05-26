@@ -1,6 +1,10 @@
 package com.company.use_case;
 
+import com.company.exception.PriceException;
+import com.company.exception.ProductException;
 import com.company.model.*;
+
+import java.util.Optional;
 
 public class GetProductAsPublic {
     private PriceRepository priceRepository;
@@ -11,11 +15,13 @@ public class GetProductAsPublic {
         this.productRepository = productRepository;
     }
 
-    public ProductDto getProduct(int productId){
-        Product p = productRepository.findById(productId);
+    public ProductDto getProduct(int productId) throws PriceException, ProductException {
+        Optional<Product> product = productRepository.findById(productId);
+        if(!product.isPresent()) throw new ProductException("Product not found : "+productId);
 
-        Price price = priceRepository.findByProductId(productId);
+        Optional<Price> price = priceRepository.findByProductId(productId);
+        if(!price.isPresent()) throw new PriceException("Price not found for the product :"+productId);
 
-        return new ProductDto(p, price.getPrice());
+        return new ProductDto(product.get(), price.get().getPrice());
     }
 }

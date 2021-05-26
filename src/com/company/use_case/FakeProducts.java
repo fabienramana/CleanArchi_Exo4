@@ -5,6 +5,7 @@ import com.company.model.ProductRepository;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class FakeProducts implements ProductRepository {
     Map<Integer, Product> products;
@@ -20,7 +21,7 @@ public class FakeProducts implements ProductRepository {
     }
 
     @Override
-    public Product findById(int id) {
-        return products.get(id);
+    public Optional<Product> findById(int id) {
+        return Optional.ofNullable(products.get(id));
     }
 }

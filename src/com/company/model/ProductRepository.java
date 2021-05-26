@@ -1,5 +1,7 @@
 package com.company.model;
 
+import java.util.Optional;
+
 public interface ProductRepository {
-    public Product findById(int id);
+    public Optional<Product> findById(int id);
 }
