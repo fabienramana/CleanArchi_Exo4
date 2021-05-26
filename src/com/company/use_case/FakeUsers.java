@@ -11,7 +11,7 @@ public class FakeUsers implements UserRepository {
     
     public FakeUsers(){
         users = new HashMap<>();
-        User user = new User();
+        User user = new User(1, "Jean Kevin", "jeankevin");
         users.put(1, user);
     }
 
