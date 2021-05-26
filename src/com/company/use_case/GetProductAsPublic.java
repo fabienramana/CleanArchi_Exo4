@@ -7,6 +7,7 @@ import com.company.model.*;
 import java.util.Optional;
 
 public class GetProductAsPublic {
+
     private PriceRepository priceRepository;
     private ProductRepository productRepository;
 
