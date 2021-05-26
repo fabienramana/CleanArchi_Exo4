@@ -1,33 +1,32 @@
 package com.company.model;
 
-
 import java.util.Date;
 
 public class SellHistory {
-    User user;
-    Product product;
+    Integer userId;
+    Integer productId;
     Date date;
 
-    public SellHistory(User user, Product product, Date date) {
-        this.user = user;
-        this.product = product;
+    public SellHistory(Integer userId, Integer productId, Date date){
+        this.userId = userId;
+        this.productId = productId;
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
-    public Product getProduct() {
-        return product;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public Date getDate() {

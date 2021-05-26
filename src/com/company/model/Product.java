@@ -1,6 +1,7 @@
 package com.company.model;
 
 public class Product {
+
     private int id;
     String name;
     String description;
@@ -57,4 +58,5 @@ public class Product {
     public void setDetails(String details) {
         this.details = details;
     }
+
 }

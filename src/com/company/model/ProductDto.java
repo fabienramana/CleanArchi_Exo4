@@ -12,4 +12,15 @@ public class ProductDto extends Product{
         super(product.getId(), product.getName(), product.getDescription(), product.getCategory(), product.details);
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "ProductDto{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", details='" + details + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
