@@ -6,7 +6,7 @@ public class Main {
 	// write your code here
     }
     
-    public initData(){
+    public void initData(){
         
     }
 }
