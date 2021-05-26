@@ -1,0 +1,12 @@
+Nous avons décidé d'appliquer le concept de DDD sur notre projet (Domain-Driven Design) car celui-ci s'y prêtait plutôt bien.
+Avec le modèle de données, on peut supposer que le projet gère un site de e-commerce.
+Sur ce genre de projet, on doit gérer de nombreux use cases, ce qui justifie notre approche DDD.
+
+Concernant l'architecture, nous avons décidé de diviser notre projet en 3 : 
+- Le modèle qui contiendra nos entités (qui peut aussi être découpé de l'intérieur pour plus de clarté).
+- Les différentes exceptions créées pour répondre éviter les cas de figures pouvant générer des bugs.
+- Des use_cases : Nous avons créé différentes classes et chacune répond à un cas de figure du projet (Ex: récupérer un produit pour l'afficher).
+
+Afin de modéliser la base de données, nous avons créé de fausses données que l'on peut utiliser pour tester les algorithmes contenus dans les classes uses_cases.
+
+En plus de cela, nous avons créés des tests unitaires pour affirmer la solidité du code.
